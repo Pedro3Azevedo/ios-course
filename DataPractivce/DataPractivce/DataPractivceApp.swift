@@ -1,6 +1,6 @@
 //
-//  JournalApp.swift
-//  Journal
+//  DataPractivceApp.swift
+//  DataPractivce
 //
 //  Created by pedro azevedo on 08/01/2026.
 //
@@ -9,10 +9,11 @@ import SwiftUI
 import SwiftData
 
 @main
-struct JournalApp: App {
+struct DataPractivceApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            JournalEntry.self,
+            Item.self,
+            Todo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -22,10 +23,10 @@ struct JournalApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
+
     var body: some Scene {
         WindowGroup {
-            JounalEntriesListView()
+            ContentView()
         }
         .modelContainer(sharedModelContainer)
     }
